@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  YJFoundationDemo
 //
-//  Created by EStrongerE023 on 2019/5/10.
-//  Copyright © 2019 EStrongerE023. All rights reserved.
+//  Created by EStrongerE023 on 2020/1/14.
+//  Copyright © 2020 Moyejin. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -14,9 +14,32 @@
 
 @implementation AppDelegate
 
+- (UIWindow *)window {
+    
+    YJ_GET_METHOD_RETURN_OBJC(_window);
+    
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    _window.backgroundColor = [UIColor whiteColor];
+    
+    return _window;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UINavigationController *yj_navigationController = [[UINavigationController alloc] initWithRootViewController:[UIViewController new]];
+    
+    yj_navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    NSDictionary *yj_dictionary = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
+    [yj_navigationController.navigationBar setTitleTextAttributes:yj_dictionary];
+    
+    self.window.rootViewController = yj_navigationController;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
