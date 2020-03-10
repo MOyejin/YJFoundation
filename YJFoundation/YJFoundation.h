@@ -49,7 +49,7 @@
 #import "NSTimer+YJTimer.h"
 
 #pragma mark - NSObject+YJObject
-//#import "NSObject+YJObject.h"
+#import "NSObject+YJObject.h"
 
 #pragma mark - NSNumber+YJNumber
 #import "NSNumber+YJNumber.h"
