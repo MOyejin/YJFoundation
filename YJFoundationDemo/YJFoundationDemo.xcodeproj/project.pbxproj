@@ -28,6 +28,7 @@
 		6C65ED3523CD895E00768C68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C65ED3423CD895E00768C68 /* ViewController.m */; };
 		6C65ED3A23CD896100768C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C65ED3923CD896100768C68 /* Assets.xcassets */; };
 		6C65ED4023CD896100768C68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C65ED3F23CD896100768C68 /* main.m */; };
+		6CB3BBCC2417625000FECA47 /* NSObject+YJObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB3BBCB2417625000FECA47 /* NSObject+YJObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		6C65ED3E23CD896100768C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C65ED3F23CD896100768C68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6C65ED4A23CD8C6500768C68 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6CB3BBCA2417625000FECA47 /* NSObject+YJObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YJObject.h"; sourceTree = "<group>"; };
+		6CB3BBCB2417625000FECA47 /* NSObject+YJObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YJObject.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 		6C42840B23D305EF00FD5899 /* YJFoundation+Category */ = {
 			isa = PBXGroup;
 			children = (
+				6CB3BBC92417625000FECA47 /* NSObject+YJObject */,
 				6C42840C23D305EF00FD5899 /* NSAttributedString+YJAttributedString */,
 				6C42840F23D305EF00FD5899 /* NSMutableDictionary+YJMutableDictionary */,
 				6C42841223D305EF00FD5899 /* NSNotificationCenter+YJNotificationCenter */,
@@ -323,6 +327,15 @@
 			path = AppDelegates;
 			sourceTree = "<group>";
 		};
+		6CB3BBC92417625000FECA47 /* NSObject+YJObject */ = {
+			isa = PBXGroup;
+			children = (
+				6CB3BBCA2417625000FECA47 /* NSObject+YJObject.h */,
+				6CB3BBCB2417625000FECA47 /* NSObject+YJObject.m */,
+			);
+			path = "NSObject+YJObject";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C42844B23D305F000FD5899 /* NSMutableAttributedString+YJMutableAttributedString.m in Sources */,
+				6CB3BBCC2417625000FECA47 /* NSObject+YJObject.m in Sources */,
 				6C42844323D305F000FD5899 /* NSBundle+YJBundle.m in Sources */,
 				6C42844623D305F000FD5899 /* NSArray+YJArray.m in Sources */,
 				6C42844423D305F000FD5899 /* NSData+YJData.m in Sources */,

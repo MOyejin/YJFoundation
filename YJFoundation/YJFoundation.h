@@ -9,8 +9,6 @@
 #ifndef YJFoundation_h
 #define YJFoundation_h
 
-#define YJ_GET_METHOD_RETURN_OBJC(objc) if (objc) return objc
-
 #pragma mark - NSString+YJString
 #import "NSString+YJString.h"
 
@@ -60,3 +58,20 @@
 #import "NSNotificationCenter+YJNotificationCenter.h"
 
 #endif /* YJFoundation_h */
+
+
+#pragma mark - Define
+
+#define YJ_GET_METHOD_RETURN_OBJC(objc) if (objc) return objc
+
+#define YJ_WEAK_SELF(type)  __weak __typeof(&*self)weakSelf = self
+#define YJ_STRONG_SELF(type)  __strong __typeof(&*self)weakSelf = self
+
+#define YJ_ANGLE_TO_RADIAN(x) (M_PI * (x) / 180.0)
+#define YJ_RADIAN_TO_ANGLE(radian) (radian * 180.0) / (M_PI)
+
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...)
+#endif
