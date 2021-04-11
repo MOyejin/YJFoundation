@@ -97,6 +97,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
+ 给指定富文本字符串设置行距
+ 
+ @param attributedString NSAttributedString
+ @param lineSpacing 行距
+ @param alignment 字体位置
+ @return NSMutableAttributedString
+ */
++ (NSMutableAttributedString *)yj_attributedStringWithAttributedString:(NSAttributedString *)attributedString
+                                                           lineSpacing:(CGFloat)lineSpacing
+                                                             alignment:(NSTextAlignment)alignment;
+/**
  给指定字符串添加下划线
  
  @param string NSString

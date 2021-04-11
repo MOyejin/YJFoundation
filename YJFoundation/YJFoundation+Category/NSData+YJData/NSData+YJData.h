@@ -30,6 +30,19 @@ typedef NS_ENUM(NSInteger, YJEncodedType) {
 + (NSData *)yj_compressOriginalImage:(UIImage *)image
                   compressionQuality:(CGFloat)compressionQuality;
 
+
+/**
+ 将指定的图片转成NSData, 可输入指定压缩比例,图片内存大小
+ 
+ @param image UIImage
+ @param compressionQuality 压缩比例 （0.5时最接近原图）
+ @param KBytes 内存大小限制 （单位KB 默认500Kb）
+ @return NSData
+ */
++ (NSData *)yj_compressOriginalImage:(UIImage *)image
+                  compressionQuality:(CGFloat)compressionQuality
+           compressionSizeWithKBytes:(CGFloat)KBytes;
+
 /**
  将制定的APNs NSData转成NSString
  

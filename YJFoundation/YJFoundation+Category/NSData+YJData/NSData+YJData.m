@@ -42,6 +42,62 @@
     return yj_data;
 }
 
++ (NSData *)yj_compressOriginalImage:(UIImage *)image
+                  compressionQuality:(CGFloat)compressionQuality
+           compressionSizeWithKBytes:(CGFloat)KBytes{
+    
+    NSData *yj_data = UIImageJPEGRepresentation(image, compressionQuality);
+    
+    if (!KBytes||KBytes <= 0) {
+        KBytes = 500;
+    }
+    //优先压缩图片质量------开始
+    CGFloat yj_maxQuality = compressionQuality;//0.5最接近原图
+    if (yj_data.length>KBytes*1024) {//减少压缩次数 降低卡顿时长 直接跳转到所需要压缩的内存相近值
+        if (yj_data.length>2*1024*1024) {//2M以及以上
+            yj_maxQuality = 0.05;
+        }else if (yj_data.length>1024*1024) {//1M-2M
+            yj_maxQuality = 0.1;
+        }else if (yj_data.length>512*1024) {//0.5M-1M
+            yj_maxQuality = 0.2;
+        }else if (yj_data.length>200*1024) {//0.25M-0.5M
+            yj_maxQuality = 0.4;
+        }
+        yj_data = UIImageJPEGRepresentation(image, yj_maxQuality);
+    }
+    
+    CGFloat yj_dataKBytes = yj_data.length / 1024;//KB
+    CGFloat yj_lastData   = yj_dataKBytes;
+    
+    while (yj_dataKBytes > KBytes && yj_maxQuality > 0.02f) {
+        yj_maxQuality = yj_maxQuality - 0.02f;
+        yj_data = UIImageJPEGRepresentation(image, yj_maxQuality);
+        yj_dataKBytes = yj_data.length / 1024;
+        if (yj_lastData == yj_dataKBytes) {
+            break;
+        } else {
+            yj_lastData = yj_dataKBytes;
+        }
+    }
+    //优先压缩图片质量------结束
+    
+    //图片质量压缩到了底线 通过缩小图片尺寸来达到指定压缩大小
+    CGFloat lastDataLength = 0;
+    while (yj_data.length/1024 > KBytes && yj_data.length != lastDataLength) {
+        lastDataLength = yj_data.length;
+        CGFloat ratio = KBytes*1024 / yj_data.length;//要求达到的大小和现在图片大小比
+        CGSize size = CGSizeMake((NSUInteger)(image.size.width * sqrtf(ratio)),
+                                 (NSUInteger)(image.size.height * sqrtf(ratio))); // 使用NSUInteger防止白色空白
+        UIGraphicsBeginImageContext(size);
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        yj_data = UIImageJPEGRepresentation(image, yj_maxQuality);
+    }
+    
+    return yj_data;
+}
+
 + (NSString *)yj_replacingAPNsTokenWithData:(NSData *)data {
     
     NSString *yj_replacingStringOne   = [[data description] stringByReplacingOccurrencesOfString:@"<" withString: @""];

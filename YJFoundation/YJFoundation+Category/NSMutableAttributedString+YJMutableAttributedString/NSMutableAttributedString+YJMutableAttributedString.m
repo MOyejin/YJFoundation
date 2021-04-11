@@ -151,6 +151,29 @@
     return yj_attributedString;
 }
 
++ (NSMutableAttributedString *)yj_attributedStringWithAttributedString:(NSAttributedString *)attributedString
+                                                           lineSpacing:(CGFloat)lineSpacing
+                                                             alignment:(NSTextAlignment)alignment{
+    
+    if (attributedString.length <= 0) {
+        
+        return nil;
+    }
+    
+    NSMutableAttributedString *yj_attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:attributedString];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    [paragraphStyle setLineSpacing:lineSpacing];
+    [paragraphStyle setAlignment:alignment];
+    
+    [yj_attributedString addAttribute:NSParagraphStyleAttributeName
+                                value:paragraphStyle
+                                range:NSMakeRange(0, [attributedString length])];
+    
+    return yj_attributedString;
+}
+
 + (NSMutableAttributedString *)yj_attributedStringAddLineWithAttributedString:(NSAttributedString *)attributedString
                                                                         range:(NSRange)range {
     
