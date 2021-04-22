@@ -378,6 +378,74 @@ typedef NS_ENUM(NSInteger, YJEncodedType) {
 + (NSData *)yj_getDataWithBundleNamed:(NSString *)name;
 
 
+#pragma mark - RSA加密/解密
+/**
+ RSA加密
+ 
+ @param str NSString
+ @param pubKey NSString
+ @return base64 encoded string
+ */
++ (NSString *)yj_encryptString:(NSString *)str publicKey:(NSString *)pubKey;
+/**
+ RSA加密
+ 
+ @param data NSData
+ @param pubKey NSString
+ @return raw data
+ */
++ (NSData *)yj_encryptData:(NSData *)data publicKey:(NSString *)pubKey;
+/**
+ RSA加密
+ 
+ @param str NSString
+ @param privKey NSString
+ @return base64 encoded string
+ */
++ (NSString *)yj_encryptString:(NSString *)str privateKey:(NSString *)privKey;
+/**
+ RSA加密
+ 
+ @param data NSData
+ @param privKey NSString
+ @return raw data
+ */
++ (NSData *)yj_encryptData:(NSData *)data privateKey:(NSString *)privKey;
+
+/**
+ RSA解密
+ 
+ @param str NSString
+ @param pubKey NSString
+ @return string
+ */
+// decrypt base64 encoded string, convert result to string(not base64 encoded)
++ (NSString *)yj_decryptString:(NSString *)str publicKey:(NSString *)pubKey;
+/**
+ RSA解密
+ 
+ @param data NSData
+ @param pubKey NSString
+ @return raw data
+ */
++ (NSData *)yj_decryptData:(NSData *)data publicKey:(NSString *)pubKey;
+/**
+ RSA解密
+ 
+ @param str NSString
+ @param privKey NSString
+ @return NSString
+ */
++ (NSString *)yj_decryptString:(NSString *)str privateKey:(NSString *)privKey;
+/**
+ RSA解密
+ 
+ @param data NSData
+ @param privKey NSString
+ @return raw data
+ */
++ (NSData *)yj_decryptData:(NSData *)data privateKey:(NSString *)privKey;
+
 @end
 
 NS_ASSUME_NONNULL_END
