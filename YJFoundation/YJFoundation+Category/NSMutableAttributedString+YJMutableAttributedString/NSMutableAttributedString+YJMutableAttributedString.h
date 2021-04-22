@@ -86,6 +86,18 @@ NS_ASSUME_NONNULL_BEGIN
                                                  lineSpacing:(CGFloat)lineSpacing;
 
 /**
+ 给指定字符串设置行距
+ 
+ @param string 字符串
+ @param lineSpacing 行距
+ @param alignment 字体位置
+ @return NSMutableAttributedString
+ */
++ (NSMutableAttributedString *)yj_attributedStringWithString:(NSString *)string
+                                                 lineSpacing:(CGFloat)lineSpacing
+                                                   alignment:(NSTextAlignment)alignment;
+
+/**
  给指定富文本字符串设置行距
  
  @param attributedString NSAttributedString
